@@ -27,39 +27,30 @@ categoriasDeProdutos.push(
 produtos.push(
   { id: 1, name: "Celular", price: 777.7, categoryId: 2 },
   { id: 1, name: "Alvejante", price: 4.7, categoryId: 5 },
-  { id: 1, name: "Aspirador de pó", price: 99, categoryId: 1 },
+  { id: 1, name: "Aspirador de pó", price: 9, categoryId: 1 },
+  { id: 1, name: "Aspirador de pêra", price: 9, categoryId: 1 },
 )
 
 const produtosEletronicos = produtos.filter((value) => value.categoryId === 2)
 produtosEletronicos.forEach((value) => console.log(value.name))
 
-const produtosAte10 = produtos.filter((value) => value.price < 10)
-const nomeCategoriasComProdutosAte10 = []
-produtosAte10.forEach((value) => {
-  categoriasDeProdutos.forEach((categoria) => {
-    if (categoria.id === value.categoryId) {
-      nomeCategoriasComProdutosAte10.push(categoria.name)
-    }
-  })
-})
-nomeCategoriasComProdutosAte10.forEach((value) => console.log(value))
+produtos.filter((value) => value.price < 10)
+.forEach((item) => console.log(item.name))
 
-const categoriasDesativadas = categoriasDeProdutos.filter((value) => value.status === "inativa")
-const produtosComCategoriasInativas = []
-categoriasDesativadas.forEach((categoria) => {
+const categoriasInativas = categoriasDeProdutos.filter((value) => value.status === "inativa")
+categoriasInativas.forEach((categoria) => {
   produtos.forEach((value) => {
     if (categoria.id === value.categoryId) {
-      produtosComCategoriasInativas.push(value.name)
+      console.log(value.name)
     }
   })
 })
-produtosComCategoriasInativas.forEach((value) => console.log(value))
 
 let productsQuantity = 0
 
-produtos.forEach((produto) => {
-  categoriasDeProdutos.forEach((categoria) => {
-    if (produto.categoryId === categoria.id) {
+categoriasDeProdutos.forEach((categoria) => {
+  produtos.forEach((produto) => {
+    if (categoria.id === produto.categoryId) {
       categoria.products = productsQuantity + 1
       productsQuantity = categoria.products
     }
