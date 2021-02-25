@@ -69,3 +69,18 @@ produtos.forEach((produto) => {
 })
 
 console.log(categoriasDeProdutos)
+
+// 5
+
+var list = []
+const databaseInsert = function (data, callback) {​​​​​​​
+    setTimeout(function () {​​​​​​​
+        list.push(data);
+        if (callback) {​​​​​​​
+            callback();
+        }​​​​​​​
+    }​​​​​​​, 0);
+}​​​​​​​;
+
+databaseInsert("teste", function() { console.log(list) });
+console.log("lista: ", list);
